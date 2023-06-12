@@ -2,8 +2,9 @@
 
 const keys = document.querySelector('#digits')
 const display = document.querySelector('#display')
-let num1 = 0;
-let num2 = 0;
+const num1 = [];
+const num2 = [];
+let numberCheck = false;
 
 function calculate(x, operator, y) {
     console.log(x, y);
@@ -29,13 +30,7 @@ function listenToKeys() {
 
             if (!action) {
                 console.log("number");
-                if(num2 === 0){
-                    num1 = num;
-                } 
-                if (num1 != 0){
-                    num2 = num;
-                }
-                console.log("numbers", num1, num2);
+                numbersLog(num);
             }
 
             if ((action === '+') ||
@@ -44,10 +39,18 @@ function listenToKeys() {
                 (action === '/') ||
                 (action === '=')) {
                     console.log("operator");
+                    numberCheck = true;
+
             }
 
             if (action == '.') {
                 console.log("dot");
+                if(numberCheck === false){
+                    num1.push(".");
+                }
+                if (numberCheck === true){
+                    num2.push(".");
+                }
             }
 
             if (action == 'clear') {
@@ -56,4 +59,15 @@ function listenToKeys() {
         }
     })
 }
+
 listenToKeys();
+
+function numbersLog(num) {
+    if(numberCheck === false){
+        num1.push(num);
+    }
+    if (numberCheck === true){
+        num2.push(num);
+    }
+    console.log(num1.join(""),num2.join(""));
+}
