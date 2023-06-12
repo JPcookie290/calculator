@@ -13,15 +13,22 @@ function calculate(x, y, operator) {
     return y;
 }
 
+const plus = document.querySelector(".plus");
+const minus = document.querySelector(".minus");
+const multiply = document.querySelector(".multiply");
+const divide = document.querySelector(".divide");
+const clear = document.querySelector(".clear");
+const point = document.querySelector("point");
+const equal = document.querySelector(".equal");
+
 function listenToKeys() {
     keys.addEventListener('click', (e) => {
         if (e.target.matches('.grid')) {
             let key = e.target;
             let action = key.dataset.action;
-            let keyContent = key.getAttribute('data-value');
 
             if (!action) {
-                console.log('eine Ziffer wurde geklickt');
+                console.log('Ziffer wurde geklickt');
             }
 
             if ((action === '+') ||
@@ -29,14 +36,14 @@ function listenToKeys() {
                 (action === '*') ||
                 (action === '/') ||
                 (action === '=')) {
-                console.log('ein Rechenoperator wurde geklickt');
+                console.log('Rechenoperator wurde geklickt');
             }
 
             if (action == '.') {
-                console.log('der Dezimalpunkt wurde geklickt');
+                console.log('Dezimalpunkt wurde geklickt');
             }
             if (action == 'clear') {
-                console.log('die Taste AC wurde geklickt');
+                console.log('AC wurde geklickt');
             }
         }
     })

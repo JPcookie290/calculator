@@ -108,7 +108,7 @@ body{
     height: 80px;
     width: 100%;
     background-color: #4F772D;
-    border: none;
+    border: solid 1px #393E41;
     border-radius: 5px;
 }
 .number{
