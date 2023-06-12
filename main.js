@@ -1,6 +1,8 @@
 "use strict";
 
-function calculate(x, y, operator) {
+
+
+function calculate(x, operator, y) {
     if (operator === '+') {
         return x + y;
     } else if (operator === '-') {
@@ -13,24 +15,24 @@ function calculate(x, y, operator) {
     return y;
 }
 
-//const keys = document.querySelectorAll()
-
-const plus = document.querySelector(".plus");
-const minus = document.querySelector(".minus");
-const multiply = document.querySelector(".multiply");
-const divide = document.querySelector(".divide");
-const clear = document.querySelector(".clear");
-const point = document.querySelector("point");
-const equal = document.querySelector(".equal");
+const keys = document.querySelector('#digits')
+const display = document.querySelector('#display')
+let current = "";
+let checkNum2 = false;
+let zahl1;
+let zahl2;
+let ergebnis;
 
 function listenToKeys() {
     keys.addEventListener('click', (e) => {
         if (e.target.matches('.grid')) {
             let key = e.target;
             let action = key.dataset.action;
+            let num = key.dataset.value;
 
             if (!action) {
-                console.log('Ziffer wurde geklickt');
+                numLog(num);
+                updateDisplay();
             }
 
             if ((action === '+') ||
@@ -38,15 +40,68 @@ function listenToKeys() {
                 (action === '*') ||
                 (action === '/') ||
                 (action === '=')) {
-                console.log('Rechenoperator wurde geklickt');
+                opLog(action);
+                updateDisplay();
             }
 
             if (action == '.') {
-                console.log('Dezimalpunkt wurde geklickt');
+                addPoint();
+                updateDisplay();
             }
+
             if (action == 'clear') {
-                console.log('AC wurde geklickt');
+                clear();
+                updateDisplay();
             }
         }
     })
 }
+
+function updateDisplay() {
+    display.innerHTML = current;
+}
+
+function numLog(zahl) {
+    if (checkNum2 === false) {
+        current += zahl;
+    }
+    if (checkNum2 === true) {
+        current += zahl;
+    }
+    //console.log('Ziffer', current, checkNum2);
+}
+
+function opLog(operator) {
+    if (checkNum2 === false) {
+        zahl1 = parseFloat(current);
+        checkNum2 = true;
+        current = "";
+    }
+    if (checkNum2 === true) {
+        zahl2 = parseFloat(current);
+        if (isNaN(ergebnis)) {
+            ergebnis = calculate(zahl1, operator, zahl2);
+            console.log(zahl1, zahl2, ergebnis);
+            current = "";
+        } else{
+            zahl1 = ergebnis;
+            ergebnis = calculate(zahl1, operator, zahl2);
+            console.log(zahl1, zahl2, ergebnis);
+            current = "";
+        }
+    }
+    //console.log('Rechenoperator', zahl1, operator, checkNum2);
+}
+
+function addPoint() {
+    current += ".";
+    console.log('Punkt');
+}
+
+function clear() {
+    current = "";
+    checkNum2 = false;
+    console.log('AC', checkNum2);
+}
+
+listenToKeys();

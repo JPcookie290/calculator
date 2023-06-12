@@ -26,6 +26,10 @@ body{
     grid-row: 1;
     border: solid 1px #393E41;
     border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 70px;
 }
 .numPad{
     grid-row: 2;
