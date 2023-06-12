@@ -1,0 +1,136 @@
+*{
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body{
+    margin: 0;
+    background-color: #393E41;
+}
+
+.calcWrapper{
+    background-color: #D3D0CB;
+    border: solid 2px black;
+    border-radius: 5px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 30%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 5fr;
+}
+.display{
+    background-color: white;
+    grid-row: 1;
+    border: solid 1px #393E41;
+    border-radius: 2px;
+}
+.numPad{
+    grid-row: 2;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-items: center;
+    align-items: space-evenly;
+}
+.one{
+    grid-column: 1;
+    grid-row: 1;
+}
+.two{
+    grid-column: 2;
+    grid-row: 1;
+}
+.three{
+    grid-column: 3;
+    grid-row: 1;
+}
+.plus{
+    grid-column: 4;
+    grid-row: 1;
+}
+.four{
+    grid-column: 1;
+    grid-row: 2;
+}
+.five{
+    grid-column: 2;
+    grid-row: 2;
+}
+.six{
+    grid-column: 3;
+    grid-row: 2;
+}
+.minus{
+    grid-column: 4;
+    grid-row: 2;
+}
+.seven{
+    grid-column: 1;
+    grid-row: 3;
+}
+.eight{
+    grid-column: 2;
+    grid-row: 3;
+}
+.nine{
+    grid-column: 3;
+    grid-row: 3;
+}
+.multiply{
+    grid-column: 4;
+    grid-row: 3;
+}
+.clear{
+    grid-column: 1;
+    grid-row: 4;
+}
+.point{
+    grid-column: 2;
+    grid-row: 4;
+}
+.null{
+    grid-column: 3;
+    grid-row: 4;
+}
+.divide{
+    grid-column: 4;
+    grid-row: 4;
+}
+.equal{
+    grid-column: 1 /span 4;
+    grid-row: 5;
+    height: 80px;
+    width: 100%;
+    background-color: #4F772D;
+    border: none;
+    border-radius: 5px;
+}
+.number{
+    width: 100%;
+    height: 100%;
+    background-color: #2C8C99;
+    border: solid 1px #393E41;
+    border-radius: 5px;
+}
+.operator{
+    width: 100%;
+    height: 100%;
+    background-color: #E15554;
+    border: solid 1px #393E41;
+    border-radius: 5px;
+}
+.number,
+.equal,
+.operator{
+    color: white;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
