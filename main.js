@@ -13,6 +13,8 @@ function calculate(x, y, operator) {
     return y;
 }
 
+//const keys = document.querySelectorAll()
+
 const plus = document.querySelector(".plus");
 const minus = document.querySelector(".minus");
 const multiply = document.querySelector(".multiply");
