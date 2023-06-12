@@ -1,6 +1,12 @@
 "use strict";
 
-
+const keys = document.querySelector('#digits')
+const display = document.querySelector('#display')
+let current = "";
+let checkNum2 = false;
+let zahl1 = 0;
+let zahl2 = 0;
+let ergebnis;
 
 function calculate(x, operator, y) {
     if (operator === '+') {
@@ -14,14 +20,6 @@ function calculate(x, operator, y) {
     }
     return y;
 }
-
-const keys = document.querySelector('#digits')
-const display = document.querySelector('#display')
-let current = "";
-let checkNum2 = false;
-let zahl1;
-let zahl2;
-let ergebnis;
 
 function listenToKeys() {
     keys.addEventListener('click', (e) => {
@@ -80,13 +78,13 @@ function opLog(operator) {
     if (checkNum2 === true) {
         zahl2 = parseFloat(current);
         if (isNaN(ergebnis)) {
-            ergebnis = calculate(zahl1, operator, zahl2);
-            console.log(zahl1, zahl2, ergebnis);
+            ergebnis = calculate(+zahl1, operator, +zahl2);
+            console.log("zahl1: ", zahl1, typeof zahl1, "zahl2:", zahl2, typeof zahl2, ergebnis);
             current = "";
         } else{
             zahl1 = ergebnis;
-            ergebnis = calculate(zahl1, operator, zahl2);
-            console.log(zahl1, zahl2, ergebnis);
+            ergebnis = calculate(+zahl1, operator, +zahl2);
+            console.log("zahl1: ", zahl1, typeof zahl1, "zahl2:", zahl2, typeof zahl2, ergebnis);
             current = "";
         }
     }
@@ -100,8 +98,12 @@ function addPoint() {
 
 function clear() {
     current = "";
+    zahl1 = 0;
+    zahl2 = 0;
+    ergebnis = "";
     checkNum2 = false;
-    console.log('AC', checkNum2);
+    console.log('clear', checkNum2, "zahl1: ", zahl1, typeof zahl1, "zahl2:", zahl2, typeof zahl2, ergebnis);
+    console.log();
 }
 
 listenToKeys();
