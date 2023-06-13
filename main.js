@@ -5,9 +5,9 @@ const display = document.querySelector('#display')
 const num1 = [];
 const num2 = [];
 let anzeige;
-let zahl1 = 0;
-let zahl2 = 0;
-let operator = "";
+let zahl1 = null;
+let zahl2 = null;
+let operator = null;
 let numberCheck = false;
 
 function calculate(x, operator, y) {
@@ -82,9 +82,9 @@ function dotAdd() {
 }
 
 function choice(wahl) {
-    if (zahl1 === 0) {
+    if (zahl1 === null) {
         numberCheck = false;
-    } else if (zahl2 === 0) {
+    } else if (zahl2 === null) {
         if (wahl === '+') {
             operator = '+';
         }
@@ -103,7 +103,7 @@ function choice(wahl) {
         anzeige = zahl1;
         updateDisplay();
         operator = wahl;
-        zahl2 = 0;
+        zahl2 = null;
         num2.length = 0;
     }
 }
@@ -114,9 +114,9 @@ function updateDisplay() {
 function clear() {
     num1.length = 0;
     num2.length = 0;
-    zahl1 = 0;
-    zahl2 = 0;
-    operator = "";
+    zahl1 = null;
+    zahl2 = null;
+    operator = null;
     numberCheck = false;
     anzeige = "";
     updateDisplay();
