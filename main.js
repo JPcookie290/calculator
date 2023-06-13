@@ -2,11 +2,22 @@
 
 const keys = document.querySelector('#digits')
 const display = document.querySelector('#display')
+<<<<<<< HEAD
 let current = "";
 let checkNum2 = false;
 let zahl1 = 0;
 let zahl2 = 0;
 let ergebnis;
+=======
+const num1 = [];
+const num2 = [];
+let anzeige;
+let zahl1 = null;
+let zahl2 = null;
+let operator = null;
+let numberCheck = false;
+let dot = false;
+>>>>>>> next
 
 function calculate(x, operator, y) {
     if (operator === '+') {
@@ -29,8 +40,7 @@ function listenToKeys() {
             let num = key.dataset.value;
 
             if (!action) {
-                numLog(num);
-                updateDisplay();
+                numbersLog(num);
             }
 
             if ((action === '+') ||
@@ -38,37 +48,51 @@ function listenToKeys() {
                 (action === '*') ||
                 (action === '/') ||
                 (action === '=')) {
-                opLog(action);
-                updateDisplay();
+                choice(action);
             }
 
             if (action == '.') {
-                addPoint();
-                updateDisplay();
+                dotAdd();
             }
 
             if (action == 'clear') {
                 clear();
-                updateDisplay();
             }
         }
     })
 }
 
-function updateDisplay() {
-    display.innerHTML = current;
+function numbersLog(num) {
+    if (numberCheck === false) {
+        num1.push(num);
+        zahl1 = num1.join("");
+        anzeige = zahl1;
+    }
+    if (numberCheck === true) {
+        num2.push(num);
+        zahl2 = num2.join("");
+        anzeige = zahl2;
+    }
+    updateDisplay();
 }
 
-function numLog(zahl) {
-    if (checkNum2 === false) {
-        current += zahl;
+function dotAdd() {
+    if (numberCheck === false && dot === false) {
+        num1.push(".");
+        zahl1 = num1.join("");
+        anzeige = zahl1;
+        dot = true;
     }
-    if (checkNum2 === true) {
-        current += zahl;
+    if (numberCheck === true && dot === false) {
+        num2.push(".");
+        zahl2 = num2.join("");
+        anzeige = zahl2;
+        dot = true; 
     }
-    //console.log('Ziffer', current, checkNum2);
+    updateDisplay();
 }
 
+<<<<<<< HEAD
 function opLog(operator) {
     if (checkNum2 === false) {
         zahl1 = parseFloat(current);
@@ -86,17 +110,43 @@ function opLog(operator) {
             ergebnis = calculate(+zahl1, operator, +zahl2);
             console.log("zahl1: ", zahl1, typeof zahl1, "zahl2:", zahl2, typeof zahl2, ergebnis);
             current = "";
+=======
+function choice(wahl) {
+    if (zahl1 === null) {
+        numberCheck = false;
+        dot = false;
+    } else if (zahl2 === null) {
+        if (wahl === '+') {
+            operator = '+';
+>>>>>>> next
         }
+        if (wahl === '-') {
+            operator = '-';
+        }
+        if (wahl === '*') {
+            operator = '*';
+        }
+        if (wahl === '/') {
+            operator = '/';
+        }
+        numberCheck = true;
+        dot = false;
+    } else {
+        zahl1 = calculate(+zahl1, operator, +zahl2);
+        anzeige = zahl1;
+        updateDisplay();
+        operator = wahl;
+        zahl2 = null;
+        num2.length = 0;
+        dot = false;
     }
-    //console.log('Rechenoperator', zahl1, operator, checkNum2);
 }
 
-function addPoint() {
-    current += ".";
-    console.log('Punkt');
+function updateDisplay() {
+    display.textContent = anzeige;
 }
-
 function clear() {
+<<<<<<< HEAD
     current = "";
     zahl1 = 0;
     zahl2 = 0;
@@ -104,6 +154,17 @@ function clear() {
     checkNum2 = false;
     console.log('clear', checkNum2, "zahl1: ", zahl1, typeof zahl1, "zahl2:", zahl2, typeof zahl2, ergebnis);
     console.log();
+=======
+    num1.length = 0;
+    num2.length = 0;
+    zahl1 = null;
+    zahl2 = null;
+    operator = null;
+    numberCheck = false;
+    dot = false;
+    anzeige = "";
+    updateDisplay();
+>>>>>>> next
 }
 
 listenToKeys();
