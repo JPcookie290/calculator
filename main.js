@@ -9,6 +9,7 @@ let zahl1 = null;
 let zahl2 = null;
 let operator = null;
 let numberCheck = false;
+let dot = false;
 
 function calculate(x, operator, y) {
     if (operator === '+') {
@@ -68,15 +69,17 @@ function numbersLog(num) {
 }
 
 function dotAdd() {
-    if (numberCheck === false) {
+    if (numberCheck === false && dot === false) {
         num1.push(".");
         zahl1 = num1.join("");
         anzeige = zahl1;
+        dot = true;
     }
-    if (numberCheck === true) {
+    if (numberCheck === true && dot === false) {
         num2.push(".");
         zahl2 = num2.join("");
         anzeige = zahl2;
+        dot = true; 
     }
     updateDisplay();
 }
@@ -84,6 +87,7 @@ function dotAdd() {
 function choice(wahl) {
     if (zahl1 === null) {
         numberCheck = false;
+        dot = false;
     } else if (zahl2 === null) {
         if (wahl === '+') {
             operator = '+';
@@ -98,6 +102,7 @@ function choice(wahl) {
             operator = '/';
         }
         numberCheck = true;
+        dot = false;
     } else {
         zahl1 = calculate(+zahl1, operator, +zahl2);
         anzeige = zahl1;
@@ -105,6 +110,7 @@ function choice(wahl) {
         operator = wahl;
         zahl2 = null;
         num2.length = 0;
+        dot = false;
     }
 }
 
@@ -118,6 +124,7 @@ function clear() {
     zahl2 = null;
     operator = null;
     numberCheck = false;
+    dot = false;
     anzeige = "";
     updateDisplay();
 }
