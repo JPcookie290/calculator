@@ -2,13 +2,6 @@
 
 const keys = document.querySelector('#digits')
 const display = document.querySelector('#display')
-<<<<<<< HEAD
-let current = "";
-let checkNum2 = false;
-let zahl1 = 0;
-let zahl2 = 0;
-let ergebnis;
-=======
 const num1 = [];
 const num2 = [];
 let anzeige;
@@ -17,7 +10,6 @@ let zahl2 = null;
 let operator = null;
 let numberCheck = false;
 let dot = false;
->>>>>>> next
 
 function calculate(x, operator, y) {
     if (operator === '+') {
@@ -92,25 +84,7 @@ function dotAdd() {
     updateDisplay();
 }
 
-<<<<<<< HEAD
-function opLog(operator) {
-    if (checkNum2 === false) {
-        zahl1 = parseFloat(current);
-        checkNum2 = true;
-        current = "";
-    }
-    if (checkNum2 === true) {
-        zahl2 = parseFloat(current);
-        if (isNaN(ergebnis)) {
-            ergebnis = calculate(+zahl1, operator, +zahl2);
-            console.log("zahl1: ", zahl1, typeof zahl1, "zahl2:", zahl2, typeof zahl2, ergebnis);
-            current = "";
-        } else{
-            zahl1 = ergebnis;
-            ergebnis = calculate(+zahl1, operator, +zahl2);
-            console.log("zahl1: ", zahl1, typeof zahl1, "zahl2:", zahl2, typeof zahl2, ergebnis);
-            current = "";
-=======
+
 function choice(wahl) {
     if (zahl1 === null) {
         numberCheck = false;
@@ -118,7 +92,6 @@ function choice(wahl) {
     } else if (zahl2 === null) {
         if (wahl === '+') {
             operator = '+';
->>>>>>> next
         }
         if (wahl === '-') {
             operator = '-';
@@ -145,16 +118,8 @@ function choice(wahl) {
 function updateDisplay() {
     display.textContent = anzeige;
 }
+
 function clear() {
-<<<<<<< HEAD
-    current = "";
-    zahl1 = 0;
-    zahl2 = 0;
-    ergebnis = "";
-    checkNum2 = false;
-    console.log('clear', checkNum2, "zahl1: ", zahl1, typeof zahl1, "zahl2:", zahl2, typeof zahl2, ergebnis);
-    console.log();
-=======
     num1.length = 0;
     num2.length = 0;
     zahl1 = null;
@@ -164,7 +129,6 @@ function clear() {
     dot = false;
     anzeige = "";
     updateDisplay();
->>>>>>> next
 }
 
 listenToKeys();
