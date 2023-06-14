@@ -70,16 +70,26 @@ function numbersLog(num) {
 
 function dotAdd() {
     if (numberCheck === false && dot === false) {
-        num1.push(".");
+        if (zahl1 === null) {
+            num1.push("0.");
+
+        } else {
+            num1.push(".");
+        }
         zahl1 = num1.join("");
         anzeige = zahl1;
         dot = true;
     }
     if (numberCheck === true && dot === false) {
-        num2.push(".");
+        if (zahl2 === null) {
+            num2.push("0.");
+
+        } else {
+            num2.push(".");
+        }
         zahl2 = num2.join("");
         anzeige = zahl2;
-        dot = true; 
+        dot = true;
     }
     updateDisplay();
 }
