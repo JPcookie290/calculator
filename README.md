@@ -78,15 +78,27 @@ Pushes the input into arrays and then joins them to a string.
 
 ```
 function dotAdd() {
-    if (numberCheck === false) {
-        num1.push(".");
+    if (numberCheck === false && dot === false) {
+        if (zahl1 === null) {
+            num1.push("0.");
+
+        } else {
+            num1.push(".");
+        }
         zahl1 = num1.join("");
         anzeige = zahl1;
+        dot = true;
     }
-    if (numberCheck === true) {
-        num2.push(".");
+    if (numberCheck === true && dot === false) {
+        if (zahl2 === null) {
+            num2.push("0.");
+
+        } else {
+            num2.push(".");
+        }
         zahl2 = num2.join("");
         anzeige = zahl2;
+        dot = true;
     }
     updateDisplay();
 }
